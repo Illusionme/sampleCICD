@@ -5,10 +5,13 @@ pipeline {
             args '-p 3001:3001'
         }
     }
+    environment {
+        CI = 'true'
+    }
     stages {
         stage('dependencyTrackPublisher') {
             steps {
-                dependencyTrackPublisher artifact: 'target/bom.xml', projectName: 'sampleCICD'
+                dependencyTrackPublisher artifact: 'target/bom.xml', projectName: 'sampleCICD', synchronous: true
             }
         }
 
