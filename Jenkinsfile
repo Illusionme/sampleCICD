@@ -6,6 +6,12 @@ pipeline {
         }
     }
     stages {
+        stage('dependencyTrackPublisher') {
+            steps {
+                dependencyTrackPublisher artifact: 'target/bom.xml', projectName: 'sampleCICD'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'npm install'
