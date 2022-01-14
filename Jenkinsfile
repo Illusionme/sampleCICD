@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('dependencyTrackPublisher') {
             steps {
-                dependencyTrackPublisher artifact: 'target/bom.xml', projectName: 'sampleCICD', synchronous: true
+                dependencyTrackPublisher artifact: 'target/bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true 
             }
         }
 
