@@ -9,12 +9,11 @@ pipeline {
         CI = 'true'
     }
     stages {
-        // stage('dependencyTrackPublisher') {
-        //     steps {
-        //         dependencyTrackPublisher artifact: 'target/bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true 
-        //     }
-        // }
-
+        stage('dependencyTrackPublisher') {
+            steps {
+                dependencyTrackPublisher artifact: 'bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true 
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install'
