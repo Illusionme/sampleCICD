@@ -11,7 +11,9 @@ pipeline {
     stages {
         stage('dependencyTrackPublisher') {
             steps {
-                dependencyTrackPublisher artifact: 'bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true 
+                withCredentials([string(credentialsId: 'secret', variable: 'secret')]) {
+                    dependencyTrackPublisher artifact: 'bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true, dependencyTrackApiKey: secret
+                }
             }
         }
         stage('Build') {
