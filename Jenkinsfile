@@ -11,7 +11,9 @@ pipeline {
     stages {
         stage('dependencyTrackPublisher') {
             steps {
-                dependencyCheck additionalArguments: '', odcInstallation: 'OWASP-Dependency-Check'
+                withCredentials([string(credentialsId: '31e1fc26-256c-447b-af94-c23c51efa2af', variable: 'Secret')]) {
+                    dependencyTrackPublisher artifact: 'bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true, dependencyTrackApiKey: {AQAAABAAAAAQOiqqN3VwdhaFgkGq07Z3aAV6N0ZkNK5OIJYiVJCNp5Q=}
+                }
             }
         }
         stage('Build') {
