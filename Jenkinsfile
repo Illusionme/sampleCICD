@@ -9,13 +9,6 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('dependencyTrackPublisher') {
-            steps {
-                withCredentials([string(credentialsId: 'secret', variable: 'secret')]) {
-                    dependencyTrackPublisher artifact: 'bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true, dependencyTrackApiKey: 'secret'
-                }
-            }
-        }
         stage('Build') {
             steps {
                 sh 'npm install'
