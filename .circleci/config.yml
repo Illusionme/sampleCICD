@@ -6,14 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
-          command: npm install
+          command: cd home/circleci/project && npm install
   deliver:
     docker:
       - image: 'cimg/node:12.16'
     steps:
       - checkout
       - run:
-          command: |
+          command: cd home/circleci/project 
             set -x
             npm start &
             sleep 1
