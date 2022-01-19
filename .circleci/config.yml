@@ -4,12 +4,14 @@ jobs:
     docker:
       - image: 'cimg/node:12.16'
     steps:
+      - checkout
       - run:
           command: npm install
   deliver:
     docker:
       - image: 'cimg/node:12.16'
     steps:
+      - checkout
       - run:
           command: |
             set -x
