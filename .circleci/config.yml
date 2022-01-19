@@ -13,12 +13,12 @@ jobs:
     steps:
       - checkout
       - run:
-          command: cd home/circleci/project 
-            set -x
-            npm start &
-            sleep 1
-            echo $! > .pidfile
-            set +x
+          command: cd home/circleci/project &&
+            set -x &&
+            npm start &&
+            sleep 1 &&
+            echo $! > .pidfile &&
+            set +x 
       - run:
           command: kill $(cat .pidfile)
 workflows:
