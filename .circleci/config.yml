@@ -11,9 +11,14 @@ jobs:
       - image: 'cimg/node:12.16'
     steps:
       - run:
-          command: ./jenkins/scripts/deliver.sh
+          command: |
+            set -x
+            npm start &
+            sleep 1
+            echo $! > .pidfile
+            set +x
       - run:
-          command: ./jenkins/scripts/kill.sh
+          command: kill $(cat .pidfile)
 workflows:
   version: 2
   build-and-test:
