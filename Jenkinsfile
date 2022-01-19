@@ -11,8 +11,8 @@ pipeline {
     stages {
         stage('dependencyTrackPublisher') {
             steps {
-                withCredentials([string(credentialsId: '31e1fc26-256c-447b-af94-c23c51efa2af', variable: 'Secret')]) {
-                    dependencyTrackPublisher artifact: 'bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true, dependencyTrackApiKey: '{AQAAABAAAAAQOiqqN3VwdhaFgkGq07Z3aAV6N0ZkNK5OIJYiVJCNp5Q=}'
+                withCredentials([string(credentialsId: 'krish', variable: 'api-key')]) {
+                    dependencyTrackPublisher artifact: 'bom.xml', projectName: 'sampleCICD', projectVersion: 'my-version', synchronous: true, dependencyTrackApiKey: '11289294de306e6072143d3588fde18a27'
                 }
             }
         }
